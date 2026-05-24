@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Terminology — Chapter 13</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --blue:   #1D4ED8; --blue-lt: #DBEAFE; --blue-dk: #1E3A8A;
+    --violet: #6D28D9; --violet-lt:#EDE9FE; --violet-dk:#2E1065;
+    --teal:   #0F766E; --teal-lt: #CCFBF1; --teal-dk: #042F2E;
+    --amber:  #B45309; --amber-lt:#FEF3C7; --amber-dk:#451A03;
+    --green:  #166534; --green-lt:#DCFCE7; --green-dk:#052E16;
+    --coral:  #C2410C; --coral-lt:#FFEDD5; --coral-dk:#431407;
+    --rose:   #9D174D; --rose-lt: #FCE7F3; --rose-dk: #500724;
+    --slate:  #334155; --slate-lt:#F1F5F9; --slate-dk:#0F172A;
+    --gray-50:#F9FAFB; --gray-100:#F3F4F6; --gray-200:#E5E7EB;
+    --gray-400:#9CA3AF; --gray-600:#4B5563; --gray-700:#374151; --black:#111827;
+    --font:'DM Sans',sans-serif; --mono:'DM Mono',monospace;
+    --radius:10px; --radius-sm:6px;
+  }
+  body { font-family:var(--font); background:var(--gray-50); color:var(--black); }
+  .module { max-width:860px; margin:0 auto; padding:2rem 1.5rem 4rem; }
+  .module-header { background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius); padding:1.75rem 2rem; margin-bottom:1.5rem; display:flex; gap:1.5rem; align-items:flex-start; }
+  .header-icon { width:52px; height:52px; border-radius:var(--radius-sm); background:var(--blue-lt); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .header-icon svg { width:28px; height:28px; stroke:var(--blue); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .header-text h1 { font-size:20px; font-weight:600; }
+  .header-text p { font-size:13px; color:var(--gray-400); margin-top:3px; }
+  .progress-wrap { margin-top:14px; display:flex; align-items:center; gap:10px; }
+  .progress-bg { flex:1; height:5px; background:var(--gray-200); border-radius:3px; overflow:hidden; }
+  .progress-fill { height:100%; background:var(--blue); border-radius:3px; transition:width 0.5s; width:0%; }
+  .progress-label { font-size:12px; color:var(--gray-400); white-space:nowrap; }
+  .nav-row { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:1.5rem; }
+  .tab { padding:7px 16px; font-size:13px; font-family:var(--font); font-weight:500; border:1px solid var(--gray-200); border-radius:100px; background:#fff; color:var(--gray-600); cursor:pointer; transition:all 0.15s; }
+  .tab:hover { border-color:var(--blue); color:var(--blue); }
+  .tab.active { background:var(--blue); border-color:var(--blue); color:#fff; }
+  .section { display:none; }
+  .section.active { display:block; animation:fadeIn 0.2s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+  .card { background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius); padding:1.25rem 1.5rem; margin-bottom:1rem; }
+  .card-title { font-size:14px; font-weight:600; display:flex; align-items:center; gap:7px; margin-bottom:12px; }
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; }
+  @media(max-width:620px){ .two-col,.three-col{grid-template-columns:1fr} }
+  .badge { font-size:11px; font-weight:600; padding:2px 8px; border-radius:20px; }
+  .badge-blue   { background:var(--blue-lt);   color:var(--blue-dk); }
+  .badge-violet { background:var(--violet-lt); color:var(--violet-dk); }
+  .badge-teal   { background:var(--teal-lt);   color:var(--teal-dk); }
+  .badge-amber  { background:var(--amber-lt);  color:var(--amber-dk); }
+  .badge-green  { background:var(--green-lt);  color:var(--green-dk); }
+  .badge-coral  { background:var(--coral-lt);  color:var(--coral-dk); }
+  .badge-rose   { background:var(--rose-lt);   color:var(--rose-dk); }
+  .badge-slate  { background:var(--slate-lt);  color:var(--slate-dk); }
+  .tip { border-radius:var(--radius-sm); padding:10px 14px; font-size:13px; line-height:1.6; margin-top:10px; }
+  .tip.blue   { background:var(--blue-lt);   color:var(--blue-dk);   border-left:3px solid var(--blue); }
+  .tip.violet { background:var(--violet-lt); color:var(--violet-dk); border-left:3px solid var(--violet); }
+  .tip.teal   { background:var(--teal-lt);   color:var(--teal-dk);   border-left:3px solid var(--teal); }
+  .tip.amber  { background:var(--amber-lt);  color:var(--amber-dk);  border-left:3px solid var(--amber); }
+  .tip.coral  { background:var(--coral-lt);  color:var(--coral-dk);  border-left:3px solid var(--coral); }
+  .vs-item { border:1px solid var(--gray-200); border-radius:var(--radius-sm); padding:10px 12px; }
+  .vs-head { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px; }
+  .vs-body { font-size:13px; color:var(--gray-600); line-height:1.5; }
+  .path-row { display:flex; gap:12px; align-items:flex-start; padding:9px 0; border-bottom:1px solid var(--gray-200); }
+  .path-row:last-child { border-bottom:none; }
+  .path-num { width:28px; height:28px; border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+  .path-name { font-size:13.5px; font-weight:600; color:var(--black); }
+  .path-cf { font-family:var(--mono); font-size:11px; color:var(--blue); background:var(--blue-lt); padding:1px 5px; border-radius:3px; margin-left:5px; }
+  .path-cf2 { font-family:var(--mono); font-size:11px; color:var(--violet); background:var(--violet-lt); padding:1px 5px; border-radius:3px; margin-left:5px; }
+  .path-desc { font-size:12.5px; color:var(--gray-600); margin-top:2px; line-height:1.4; }
+  .pitem { display:flex; gap:10px; align-items:flex-start; padding:9px 0; border-bottom:1px solid var(--gray-200); }
+  .pitem:last-child { border-bottom:none; padding-bottom:0; }
+  .pitem:first-child { padding-top:0; }
+  .pname { font-size:13.5px; font-weight:600; color:var(--black); }
+  .pdef  { font-size:12.5px; color:var(--gray-600); margin-top:2px; line-height:1.4; }
+  .sub-tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:1rem; }
+  .sub-tab { padding:5px 13px; font-size:12px; font-family:var(--font); font-weight:500; border:1px solid var(--gray-200); border-radius:100px; background:#fff; color:var(--gray-600); cursor:pointer; transition:all 0.15s; }
+  .sub-tab:hover { border-color:var(--blue); color:var(--blue); }
+  .sub-tab.active { background:var(--blue); border-color:var(--blue); color:#fff; }
+  .vpanel { display:none; }
+  .vpanel.active { display:block; }
+  .vtable { width:100%; border-collapse:collapse; font-size:13px; }
+  .vtable th { text-align:left; padding:8px 10px; color:var(--gray-400); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; border-bottom:1px solid var(--gray-200); }
+  .vtable td { padding:8px 10px; border-bottom:1px solid var(--gray-100); color:var(--black); vertical-align:top; }
+  .vtable tr:last-child td { border-bottom:none; }
+  .vtable tr:hover td { background:var(--gray-50); }
+  .vtable code { font-family:var(--mono); font-size:12px; color:var(--blue-dk); background:var(--blue-lt); padding:1px 6px; border-radius:3px; }
+  .vtable code.ear { color:var(--violet-dk); background:var(--violet-lt); }
+  .fc-nav { display:flex; align-items:center; gap:12px; margin-bottom:1rem; }
+  .fc-counter { font-size:13px; color:var(--gray-400); flex:1; text-align:center; }
+  .fc-btn { width:36px; height:36px; border:1px solid var(--gray-200); border-radius:50%; background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--gray-600); font-size:16px; transition:all 0.15s; }
+  .fc-btn:hover { border-color:var(--blue); color:var(--blue); }
+  .flip-wrap { perspective:1000px; height:160px; cursor:pointer; user-select:none; }
+  .flip-inner { width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform 0.5s cubic-bezier(.4,0,.2,1); }
+  .flip-inner.flipped { transform:rotateY(180deg); }
+  .flip-front,.flip-back { position:absolute; inset:0; backface-visibility:hidden; border-radius:var(--radius); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:1.5rem; text-align:center; border:1px solid var(--gray-200); }
+  .flip-front { background:#fff; }
+  .flip-back  { background:var(--blue-lt); border-color:#93C5FD; transform:rotateY(180deg); }
+  .flip-term { font-size:22px; font-weight:600; color:var(--black); font-family:var(--mono); }
+  .flip-hint { font-size:11px; color:var(--gray-400); margin-top:6px; text-transform:uppercase; letter-spacing:0.06em; }
+  .flip-def  { font-size:16px; font-weight:600; color:var(--blue-dk); }
+  .flip-ex   { font-size:12px; color:var(--blue); margin-top:6px; font-family:var(--mono); }
+  .fc-shuffle { padding:6px 14px; font-size:12px; font-family:var(--font); border:1px solid var(--gray-200); border-radius:100px; background:#fff; color:var(--gray-600); cursor:pointer; margin-left:auto; display:block; margin-bottom:10px; }
+  .fc-shuffle:hover { border-color:var(--blue); color:var(--blue); }
+  .quiz-progress { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:1.25rem; }
+  .q-dot { width:10px; height:10px; border-radius:50%; background:var(--gray-200); }
+  .q-dot.pass { background:var(--teal); }
+  .q-dot.fail { background:#E24B4A; }
+  .quiz-q-text { font-size:16px; font-weight:600; margin-bottom:1rem; line-height:1.5; }
+  .quiz-opts { display:flex; flex-direction:column; gap:8px; margin-bottom:1rem; }
+  .q-opt { padding:11px 16px; border:1px solid var(--gray-200); border-radius:var(--radius-sm); background:#fff; font-size:14px; font-family:var(--font); cursor:pointer; text-align:left; transition:all 0.15s; }
+  .q-opt:hover:not(:disabled) { border-color:var(--blue); background:var(--blue-lt); }
+  .q-opt.correct { background:var(--teal-lt); border-color:var(--teal); color:var(--teal-dk); font-weight:500; }
+  .q-opt.wrong   { background:#FCEBEB; border-color:#E24B4A; color:#501313; }
+  .q-fb { font-size:13px; padding:9px 14px; border-radius:var(--radius-sm); margin-bottom:1rem; }
+  .q-fb.correct { background:var(--teal-lt); color:var(--teal-dk); }
+  .q-fb.wrong   { background:#FCEBEB; color:#501313; }
+  .quiz-next { padding:9px 20px; font-size:13px; font-family:var(--font); font-weight:500; border:1px solid var(--gray-200); border-radius:100px; background:#fff; cursor:pointer; }
+  .score-wrap { text-align:center; padding:2rem 0 1rem; }
+  .score-big { font-size:52px; font-weight:700; line-height:1; }
+  .score-big.great { color:var(--teal); }
+  .score-big.ok    { color:var(--amber); }
+  .score-big.retry { color:#E24B4A; }
+  .score-msg { font-size:15px; color:var(--gray-600); margin-top:8px; margin-bottom:1.5rem; }
+  .retry-btn { padding:10px 24px; font-size:14px; font-family:var(--font); font-weight:500; border:1px solid var(--blue); border-radius:100px; background:var(--blue-lt); color:var(--blue-dk); cursor:pointer; transition:all 0.15s; }
+  .retry-btn:hover { background:var(--blue); color:#fff; }
+  .sense-toggle { display:flex; gap:8px; margin-bottom:1rem; }
+  .sense-btn { padding:8px 20px; font-size:13px; font-family:var(--font); font-weight:600; border:2px solid var(--gray-200); border-radius:100px; background:#fff; cursor:pointer; transition:all 0.15s; }
+  .sense-btn.eye-active { background:var(--blue); border-color:var(--blue); color:#fff; }
+  .sense-btn.ear-active { background:var(--violet); border-color:var(--violet); color:#fff; }
+  .sense-btn:not(.eye-active):not(.ear-active):hover { border-color:var(--slate); }
+</style>
+</head>
+<body>
+<div class="module">
+
+  <div class="module-header">
+    <div class="header-icon">
+      <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+    </div>
+    <div style="flex:1">
+      <div class="header-text">
+        <h1>Medical Terminology — Chapter 13</h1>
+        <p>Special Senses: Eye &amp; Ear &nbsp;·&nbsp; 7 sections &nbsp;·&nbsp; 26 flashcards &nbsp;·&nbsp; 12-question quiz</p>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bg"><div class="progress-fill" id="prog-fill"></div></div>
+        <div class="progress-label" id="prog-label">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-row" role="tablist">
+    <button class="tab active" onclick="showSec('overview',this)">Overview</button>
+    <button class="tab" onclick="showSec('eye-anatomy',this)">Eye anatomy</button>
+    <button class="tab" onclick="showSec('ear-anatomy',this)">Ear anatomy</button>
+    <button class="tab" onclick="showSec('pathology',this)">Pathology</button>
+    <button class="tab" onclick="showSec('procedures',this)">Procedures</button>
+    <button class="tab" onclick="showSec('vocab',this)">Vocabulary</button>
+    <button class="tab" onclick="showSec('flashcards',this)">Flashcards</button>
+    <button class="tab" onclick="showSec('quiz',this)">Quiz</button>
+  </div>
+
+  <!-- ===== OVERVIEW ===== -->
+  <div class="section active" id="sec-overview">
+    <div class="card">
+      <div class="card-title" style="color:var(--blue)">Chapter 13 — Two Special Senses</div>
+      <div class="two-col">
+        <div>
+          <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);margin-bottom:8px">👁 The Eye</div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div class="vs-item"><div class="vs-head" style="color:var(--blue)">Vision</div><div class="vs-body">Light enters eye → focused on retina → converted to nerve impulse → optic nerve → occipital cortex</div></div>
+            <div class="vs-item"><div class="vs-head" style="color:var(--violet)">Refraction</div><div class="vs-body">Bending of light waves as they pass through cornea and lens to focus on retina</div></div>
+            <div class="vs-item"><div class="vs-head" style="color:var(--teal)">Accommodation</div><div class="vs-body">Lens changes shape to focus on near/far objects; ciliary muscle controls lens curvature</div></div>
+          </div>
+          <div class="tip blue" style="margin-top:8px"><strong>Ophthalmology</strong> (ophthalm/o) — eye specialty · <strong>Ophthalmologist</strong> (MD) · <strong>Optometrist</strong> (OD) · <strong>Optician</strong> (lens fitting)</div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--violet);margin-bottom:8px">👂 The Ear</div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div class="vs-item"><div class="vs-head" style="color:var(--violet)">Hearing</div><div class="vs-body">Sound waves → external ear → eardrum vibrates → ossicles amplify → cochlea converts to nerve impulse → auditory nerve → temporal cortex</div></div>
+            <div class="vs-item"><div class="vs-head" style="color:var(--amber)">Equilibrium/Balance</div><div class="vs-body">Vestibular system in inner ear (semicircular canals + otolith organs) detects movement and gravity</div></div>
+            <div class="vs-item"><div class="vs-head" style="color:var(--teal)">Eustachian tube</div><div class="vs-body">Connects middle ear to nasopharynx; equalizes pressure; route for middle ear infections</div></div>
+          </div>
+          <div class="tip violet"><strong>Otolaryngology / ENT</strong> (ot/o = ear + laryng/o + -logy) · <strong>Otolaryngologist</strong> · <strong>Audiologist</strong> (hearing testing/rehab)</div>
+        </div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title" style="color:var(--blue)">Eye Organs — at a Glance</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px">
+          <span class="badge badge-blue">Cornea (corne/o, kerat/o)</span>
+          <span class="badge badge-violet">Sclera (scler/o)</span>
+          <span class="badge badge-teal">Iris (ir/o, irid/o)</span>
+          <span class="badge badge-amber">Pupil (pupill/o, cor/o)</span>
+          <span class="badge badge-green">Lens (phac/o, phak/o)</span>
+          <span class="badge badge-coral">Retina (retin/o)</span>
+          <span class="badge badge-blue">Choroid (choroid/o)</span>
+          <span class="badge badge-violet">Conjunctiva (conjunctiv/o)</span>
+          <span class="badge badge-teal">Eyelid (blephar/o, palpebr/o)</span>
+          <span class="badge badge-amber">Lacrimal gland (lacrim/o, dacry/o)</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--violet)">Ear Organs — at a Glance</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px">
+          <span class="badge badge-violet">Ear (ot/o, aur/i)</span>
+          <span class="badge badge-blue">Eardrum (myring/o, tympan/o)</span>
+          <span class="badge badge-teal">Ossicles (ossicul/o)</span>
+          <span class="badge badge-amber">Cochlea (cochle/o)</span>
+          <span class="badge badge-green">Mastoid (mastoid/o)</span>
+          <span class="badge badge-coral">Labyrinth (labyrinth/o)</span>
+          <span class="badge badge-rose">Eustachian tube (salping/o)</span>
+          <span class="badge badge-slate">Auditory (acous/o, audi/o)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== EYE ANATOMY ===== -->
+  <div class="section" id="sec-eye-anatomy">
+    <div class="card">
+      <div class="card-title" style="color:var(--blue)">Eye Anatomy — Light Pathway &amp; Structures</div>
+      <div style="display:flex;flex-direction:column;gap:0">
+        <div class="path-row">
+          <div class="path-num" style="background:var(--blue-lt);color:var(--blue-dk)">1</div>
+          <div><div class="path-name">Cornea<span class="path-cf">corne/o, kerat/o</span></div><div class="path-desc">Transparent anterior dome; first and strongest refracting surface (~2/3 of total refractive power). Avascular — nourished by aqueous humor. Keratitis = inflammation of cornea.</div></div>
+        </div>
+        <div class="path-row">
+          <div class="path-num" style="background:var(--violet-lt);color:var(--violet-dk)">2</div>
+          <div><div class="path-name">Aqueous humor</div><div class="path-desc">Clear watery fluid filling anterior and posterior chambers; produced by ciliary body; drains via trabecular meshwork (Canal of Schlemm). Blockage → ↑ intraocular pressure → glaucoma.</div></div>
+        </div>
+        <div class="path-row">
+          <div class="path-num" style="background:var(--teal-lt);color:var(--teal-dk)">3</div>
+          <div><div class="path-name">Iris<span class="path-cf">ir/o, irid/o</span></div><div class="path-desc">Colored diaphragm with circular and radial smooth muscles; controls pupil size. Dilates (mydriasis) in dim light; constricts (miosis) in bright light. Cycl/o = ciliary body.</div></div>
+        </div>
+        <div class="path-row">
+          <div class="path-num" style="background:var(--amber-lt);color:var(--amber-dk)">4</div>
+          <div><div class="path-name">Pupil<span class="path-cf">pupill/o, cor/o, core/o</span></div><div class="path-desc">Opening in center of iris through which light passes. Size controlled by iris muscles. coreoplasty = surgical repair of pupil.</div></div>
+        </div>
+        <div class="path-row">
+          <div class="path-num" style="background:var(--green-lt);color:var(--green-dk)">5</div>
+          <div><div class="path-name">Lens<span class="path-cf">phac/o, phak/o</span></div><div class="path-desc">Biconvex transparent structure; provides fine focus (accommodation). Ciliary muscle changes shape. aphakia (a- + phak/o) = absence of lens. Cataract = clouding of lens.</div></div>
+        </div>
+        <div class="path-row">
+          <div class="path-num" style="background:var(--coral-lt);color:var(--coral-dk)">6</div>
+          <div><div class="path-name">Vitreous humor<span class="path-cf">vitre/o</span></div><div class="path-desc">Gel-like substance filling posterior cavity; maintains eye shape; does not regenerate. Floaters = debris in vitreous. vitrectomy = surgical removal.</div></div>
+        </div>
+        <div class="path-row" style="border-bottom:none">
+          <div class="path-num" style="background:var(--rose-lt);color:var(--rose-dk)">7</div>
+          <div><div class="path-name">Retina<span class="path-cf">retin/o</span></div><div class="path-desc">Light-sensitive inner layer; contains photoreceptors: <strong>Rods</strong> (dim light, peripheral, black/white) and <strong>Cones</strong> (color, central, daytime). Macula lutea (macul/o) = central zone; fovea = center of macula — highest cone density (sharpest vision). Optic disk = blind spot where optic nerve exits.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title" style="color:var(--teal)">Coats of the Eye — 3 Layers</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div class="vs-item"><div class="vs-head" style="color:var(--slate)">Fibrous coat (outer)</div><div class="vs-body"><strong>Sclera (scler/o)</strong> — "white of eye"; tough protective outer layer. <strong>Cornea</strong> — anterior transparent portion of fibrous coat.</div></div>
+          <div class="vs-item"><div class="vs-head" style="color:var(--amber)">Vascular coat / Uvea (uve/o)</div><div class="vs-body"><strong>Choroid (choroid/o)</strong> — pigmented, vascular; nourishes retina. <strong>Ciliary body (cycl/o)</strong> — produces aqueous humor; lens focus. <strong>Iris (ir/o, irid/o)</strong> — controls pupil.</div></div>
+          <div class="vs-item"><div class="vs-head" style="color:var(--blue)">Nervous coat (inner)</div><div class="vs-body"><strong>Retina (retin/o)</strong> — photoreceptors; rods and cones; visual signals to optic nerve.</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--violet)">Accessory Structures</div>
+        <div style="font-size:13px;color:var(--gray-600);line-height:1.9">
+          <strong style="color:var(--black)">Orbit</strong> — bony socket protecting the eye<br>
+          <strong style="color:var(--black)">Eyelids (blephar/o, palpebr/o)</strong> — protect eye; blink reflex; palpebral fissure = opening between lids<br>
+          <strong style="color:var(--black)">Conjunctiva (conjunctiv/o)</strong> — thin mucous membrane lining eyelids and covering sclera<br>
+          <strong style="color:var(--black)">Lacrimal gland (lacrim/o, dacry/o)</strong> — produces tears (lacrimation); lubricates and cleanses<br>
+          <strong style="color:var(--black)">Meibomian gland</strong> — sebaceous glands in eyelids; produce oily layer of tear film<br>
+          <strong style="color:var(--black)">Extraocular muscles</strong> — 6 muscles move the eye in all directions
+        </div>
+        <div class="tip violet">Refraction: light bends as it passes through cornea → aqueous → lens → vitreous → retina. Emmetropia = perfect vision (normal refraction).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== EAR ANATOMY ===== -->
+  <div class="section" id="sec-ear-anatomy">
+    <div class="card">
+      <div class="card-title" style="color:var(--violet)">Ear Anatomy — Sound Pathway &amp; Three Divisions</div>
+      <div style="display:flex;flex-direction:column;gap:0">
+        <div class="path-row">
+          <div class="path-num" style="background:var(--violet-lt);color:var(--violet-dk)">1</div>
+          <div><div class="path-name">External Ear<span class="path-cf2">ot/o, aur/i</span></div><div class="path-desc"><strong>Auricle/pinna</strong> (aur/i) — collects sound waves. <strong>External auditory canal (EAC)</strong> — channels sound to eardrum; lined with ceruminous glands (produce cerumen/earwax). Cerumen protects and lubricates.</div></div>
+        </div>
+        <div class="path-row">
+          <div class="path-num" style="background:var(--amber-lt);color:var(--amber-dk)">2</div>
+          <div><div class="path-name">Tympanic membrane (eardrum)<span class="path-cf2">myring/o, tympan/o</span></div><div class="path-desc">Thin membrane separating external from middle ear; vibrates when struck by sound waves. Perforated eardrum → conductive hearing loss. myringotomy = incision; tympanoplasty = repair.</div></div>
+        </div>
+        <div class="path-row">
+          <div class="path-num" style="background:var(--teal-lt);color:var(--teal-dk)">3</div>
+          <div><div class="path-name">Middle Ear — Ossicles<span class="path-cf2">ossicul/o</span></div><div class="path-desc">Three tiny bones (smallest in the body) that amplify and transmit vibrations: <strong>Malleus</strong> (hammer) → <strong>Incus</strong> (anvil) → <strong>Stapes</strong> (stirrup). Stapes footplate vibrates against oval window. <strong>Eustachian tube (salping/o)</strong> connects to nasopharynx; equalizes pressure.</div></div>
+        </div>
+        <div class="path-row">
+          <div class="path-num" style="background:var(--green-lt);color:var(--green-dk)">4</div>
+          <div><div class="path-name">Inner Ear — Cochlea<span class="path-cf2">cochle/o</span></div><div class="path-desc">Snail-shaped, fluid-filled structure. Oval window vibration → fluid waves → stimulate hair cells (organ of Corti) → convert mechanical to electrical signals → cochlear nerve (CN VIII). Frequency (pitch) detected along cochlear length.</div></div>
+        </div>
+        <div class="path-row" style="border-bottom:none">
+          <div class="path-num" style="background:var(--coral-lt);color:var(--coral-dk)">5</div>
+          <div><div class="path-name">Inner Ear — Vestibular system<span class="path-cf2">labyrinth/o</span></div><div class="path-desc">Balance and equilibrium. <strong>Semicircular canals</strong> — detect rotational movement (3 planes). <strong>Utricle &amp; saccule</strong> — otolith organs; detect linear acceleration and gravity. Labyrinthitis = inflammation; vertigo from vestibular dysfunction.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title" style="color:var(--amber)">The 3 Ossicles — Memory: MIS</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div class="vs-item"><div class="vs-head" style="color:var(--amber)">Malleus (hammer)</div><div class="vs-body">Attached to tympanic membrane; first ossicle; receives vibration from eardrum</div></div>
+          <div class="vs-item"><div class="vs-head" style="color:var(--teal)">Incus (anvil)</div><div class="vs-body">Middle ossicle; transmits vibration from malleus to stapes</div></div>
+          <div class="vs-item"><div class="vs-head" style="color:var(--violet)">Stapes (stirrup)</div><div class="vs-body">Smallest bone in the body; footplate connects to oval window of cochlea</div></div>
+        </div>
+        <div class="tip amber">Memory: <strong>MIS</strong> = Malleus → Incus → Stapes. Or "Hammer → Anvil → Stirrup"</div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--teal)">Hearing Loss Types</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div class="vs-item"><div class="vs-head" style="color:var(--amber)">Conductive hearing loss</div><div class="vs-body">Problem in external or middle ear; sound not conducted to inner ear. Causes: cerumen impaction, otitis media, perforated eardrum, otosclerosis. Treatable.</div></div>
+          <div class="vs-item"><div class="vs-head" style="color:var(--coral)">Sensorineural hearing loss (SNHL)</div><div class="vs-body">Damage to cochlear hair cells or auditory nerve (CN VIII). Causes: aging (presbycusis), noise exposure, ototoxic drugs. Usually permanent.</div></div>
+          <div class="vs-item"><div class="vs-head" style="color:var(--violet)">Mixed hearing loss</div><div class="vs-body">Combined conductive and sensorineural components.</div></div>
+        </div>
+        <div class="tip teal"><strong>Presbycusis</strong> (presby- = old + acous/o = hearing) — age-related sensorineural hearing loss; most common cause of hearing loss in adults.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PATHOLOGY ===== -->
+  <div class="section" id="sec-pathology">
+    <div class="sub-tabs" id="path-tabs">
+      <button class="sub-tab active" onclick="showPath('eye-dis',this)">Eye disorders</button>
+      <button class="sub-tab" onclick="showPath('eye-vis',this)">Vision disorders</button>
+      <button class="sub-tab" onclick="showPath('ear-dis',this)">Ear disorders</button>
+    </div>
+    <div class="card">
+      <div class="vpanel active" id="pp-eye-dis">
+        <div class="pitem"><div><div class="pname">Cataract</div><div class="pdef">Clouding/opacity of the crystalline lens. <em>phac/o, phak/o</em>. Most common cause of reversible blindness worldwide. Causes: aging (most common), UV exposure, diabetes, trauma, congenital. Treatment: surgical lens extraction + IOL (intraocular lens) implant.</div></div></div>
+        <div class="pitem"><div><div class="pname">Glaucoma</div><div class="pdef">Elevated intraocular pressure (IOP) → optic nerve damage → irreversible peripheral vision loss ("tunnel vision"). ton/o = tone/tension. Diagnosed by tonometry (ton/o + -metry). Open-angle (most common, gradual) vs. angle-closure (acute, painful emergency). Treatment: eye drops, laser, surgery.</div></div></div>
+        <div class="pitem"><div><div class="pname">Conjunctivitis ("pink eye")</div><div class="pdef">Inflammation of conjunctiva. <em>conjunctiv/o + -itis</em>. Viral (most common, adenovirus — watery discharge, highly contagious), bacterial (purulent discharge, Staph/Strep), allergic (itching, bilateral). Neonatal (ophthalmia neonatorum) from Chlamydia/Gonorrhea.</div></div></div>
+        <div class="pitem"><div><div class="pname">Keratitis</div><div class="pdef">Inflammation of cornea. <em>kerat/o + -itis</em>. Causes: HSV (dendritic ulcers — treat with antivirals), bacterial (contact lens), fungal, acanthamoeba. Symptoms: pain, photophobia, decreased vision.</div></div></div>
+        <div class="pitem"><div><div class="pname">Diabetic retinopathy</div><div class="pdef">Retinal damage from chronic hyperglycemia. <em>retin/o + -pathy</em>. Leading cause of blindness in working-age adults. Non-proliferative → proliferative (new fragile vessels → vitreous hemorrhage). Treatment: laser photocoagulation, anti-VEGF injections, vitrectomy.</div></div></div>
+        <div class="pitem"><div><div class="pname">Age-related macular degeneration (ARMD)</div><div class="pdef">Degeneration of macula (macul/o) → central vision loss; peripheral vision preserved. Dry (atrophic, 85%) or Wet (neovascular, faster/worse, anti-VEGF treatment). Leading cause of blindness in elderly.</div></div></div>
+        <div class="pitem"><div><div class="pname">Blepharoptosis</div><div class="pdef">Drooping of the upper eyelid. <em>blephar/o + -ptosis (drooping)</em>. Congenital or acquired (3rd nerve palsy, Horner syndrome, myasthenia gravis). blepharedema = eyelid swelling (blephar/o + -edema).</div></div></div>
+        <div class="pitem"><div><div class="pname">Dacryoadenitis</div><div class="pdef">Inflammation of the lacrimal gland. <em>dacry/o + aden/o + -itis</em>. Causes: viral (EBV), bacterial, sarcoidosis. Pain and swelling over lacrimal gland (outer upper eyelid). xerophthalmia = dry eye disease (xer/o = dry + ophthalm/o).</div></div></div>
+      </div>
+      <div class="vpanel" id="pp-eye-vis">
+        <div class="pitem"><div><div class="pname">Myopia (nearsightedness)</div><div class="pdef">Near objects clear, far objects blurry. Light focuses in FRONT of retina; eyeball too long. <em>myop/o</em>. Corrected with concave (diverging) lenses. LASIK reshapes cornea.</div></div></div>
+        <div class="pitem"><div><div class="pname">Hyperopia (farsightedness)</div><div class="pdef">Far objects clearer, near blurry. Light focuses BEHIND retina; eyeball too short. Corrected with convex (converging) lenses.</div></div></div>
+        <div class="pitem"><div><div class="pname">Presbyopia</div><div class="pdef">Age-related loss of accommodation (near vision). <em>presby- (old/elder) + -opia (vision)</em>. Lens hardens → can't change shape → difficulty focusing on near objects. Treated with reading glasses (+lenses).</div></div></div>
+        <div class="pitem"><div><div class="pname">Amblyopia ("lazy eye")</div><div class="pdef">Reduced vision in one eye due to abnormal visual development in childhood. <em>ambly/o (dull) + -opia</em>. CNS suppresses input from weaker eye. Treat early (patching stronger eye, corrective lenses). ambly/o = dull/dim.</div></div></div>
+        <div class="pitem"><div><div class="pname">Diplopia</div><div class="pdef">Double vision. <em>dipl/o (double) + -opia</em>. Monocular or binocular. Causes: strabismus, cranial nerve palsy (3rd, 4th, 6th), myasthenia gravis.</div></div></div>
+        <div class="pitem"><div><div class="pname">Hemianopsia</div><div class="pdef">Loss of vision in half the visual field. <em>hemi- (half) + an- (without) + -opsia (vision)</em>. Bitemporal hemianopsia from pituitary tumor compressing optic chiasm.</div></div></div>
+        <div class="pitem"><div><div class="pname">Achromatopsia</div><div class="pdef">Complete color blindness. <em>a- (without) + chromat/o (color) + -opsia</em>. Rare; inability to distinguish any colors; from cone photoreceptor dysfunction.</div></div></div>
+        <div class="pitem"><div><div class="pname">Strabismus / Exotropia</div><div class="pdef">Strabismus: misalignment of eyes (trop/o = turning). Exotropia: outward deviation (ex- + trop/o + -ia). Esotropia: inward (cross-eyed). Exophthalmia (exo- + ophthalm/o + -ia): abnormal protrusion of eyeball (from Graves disease/hyperthyroidism).</div></div></div>
+      </div>
+      <div class="vpanel" id="pp-ear-dis">
+        <div class="pitem"><div><div class="pname">Otitis media (OM)</div><div class="pdef">Middle ear infection. <em>ot/o + -itis</em>. Most common bacterial infection in children. Acute OM: fever, ear pain, bulging red eardrum; fluid behind eardrum. Causes: S. pneumoniae, H. influenzae, M. catarrhalis. Treatment: amoxicillin. Chronic OM → tympanostomy tubes (PE tubes).</div></div></div>
+        <div class="pitem"><div><div class="pname">Otitis externa ("swimmer's ear")</div><div class="pdef">External ear canal infection. <em>ot/o + -itis</em>. Usually Pseudomonas or Staph; from moisture. Tragus tenderness on palpation. Treatment: topical antibiotic/steroid ear drops (ciprofloxacin + dexamethasone).</div></div></div>
+        <div class="pitem"><div><div class="pname">Otosclerosis</div><div class="pdef">Abnormal bone remodeling → stapes becomes fixed (ankylosed) at oval window → conductive hearing loss. <em>ot/o + scler/o + -osis</em>. Most common cause of conductive hearing loss in young adults. Hereditary. Treatment: stapedectomy.</div></div></div>
+        <div class="pitem"><div><div class="pname">Presbycusis</div><div class="pdef">Age-related sensorineural hearing loss. <em>presby- (old/elder) + acous/o (hearing)</em>. Progressive bilateral high-frequency loss; from cochlear hair cell degeneration. Most common hearing loss in older adults. Treatment: hearing aids.</div></div></div>
+        <div class="pitem"><div><div class="pname">Ménière disease</div><div class="pdef">Inner ear disorder with episodic vertigo, fluctuating sensorineural hearing loss, tinnitus, and aural fullness. From excess endolymph (endolymphatic hydrops). Treatment: low-sodium diet, diuretics, steroid injections.</div></div></div>
+        <div class="pitem"><div><div class="pname">Tinnitus</div><div class="pdef">Ringing, buzzing, or humming in the ears without external sound source. Symptom of many ear conditions: noise exposure, ototoxic drugs (aspirin, aminoglycosides, quinine), Ménière disease. Can be pulsatile (vascular) or non-pulsatile.</div></div></div>
+        <div class="pitem"><div><div class="pname">Mastoiditis</div><div class="pdef">Infection of mastoid air cells (mastoid/o + -itis); complication of untreated otitis media. Post-auricular pain/swelling, displaced pinna. Risk: meningitis, brain abscess. Treatment: IV antibiotics ± mastoidectomy.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PROCEDURES ===== -->
+  <div class="section" id="sec-procedures">
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title" style="color:var(--blue)">Eye Procedures</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-400);margin-bottom:6px">Diagnostic</div>
+        <div class="pitem"><div><div class="pname">Ophthalmoscopy (ophthalm/o + -scopy)</div><div class="pdef">Visual examination of interior of eye with ophthalmoscope; examines retina, optic disk, macula, blood vessels; detects diabetic retinopathy, glaucoma, papilledema</div></div></div>
+        <div class="pitem"><div><div class="pname">Tonometry (ton/o + -metry)</div><div class="pdef">Measurement of intraocular pressure (IOP); screens for glaucoma; normal IOP: 10–21 mmHg; air-puff or applanation tonometer</div></div></div>
+        <div class="pitem"><div><div class="pname">Visual acuity (VA) testing</div><div class="pdef">Snellen chart; measures sharpness of vision; 20/20 = normal; 20/200 = legal blindness</div></div></div>
+        <div class="pitem"><div><div class="pname">Goniotomy (goni/o + -tomy)</div><div class="pdef">goni/o = angle; incision into anterior chamber angle; treats congenital glaucoma by opening trabecular meshwork to improve drainage</div></div></div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-400);margin:10px 0 6px">Therapeutic</div>
+        <div class="pitem"><div><div class="pname">Keratoplasty (kerat/o + -plasty)</div><div class="pdef">Corneal transplant; surgical replacement of diseased cornea with donor tissue; full-thickness (penetrating keratoplasty) or partial (DSEK/DALK)</div></div></div>
+        <div class="pitem"><div><div class="pname">Coreoplasty (cor/o + -plasty)</div><div class="pdef">Surgical repair/reshaping of the pupil; treats pupil abnormalities, trauma, or prior surgery complications</div></div></div>
+        <div class="pitem"><div><div class="pname">Vitrectomy (vitre/o + -ectomy)</div><div class="pdef">Surgical removal of vitreous humor; treats diabetic retinopathy, retinal detachment, vitreous hemorrhage, macular hole</div></div></div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px">
+          <span class="badge badge-blue">LASIK (corneal reshaping)</span>
+          <span class="badge badge-violet">Cataract extraction + IOL</span>
+          <span class="badge badge-teal">Retinal laser photocoagulation</span>
+          <span class="badge badge-amber">Anti-VEGF injections (ARMD)</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--violet)">Ear Procedures</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-400);margin-bottom:6px">Diagnostic</div>
+        <div class="pitem"><div><div class="pname">Otoscopy (ot/o + -scopy)</div><div class="pdef">Visual examination of external ear canal and tympanic membrane with otoscope; diagnoses otitis media, perforated eardrum, cerumen impaction</div></div></div>
+        <div class="pitem"><div><div class="pname">Audiometry (audi/o + -metry)</div><div class="pdef">Measurement of hearing acuity; pure tone audiogram tests frequencies 250–8,000 Hz; determines type and degree of hearing loss</div></div></div>
+        <div class="pitem"><div><div class="pname">Tympanometry</div><div class="pdef">tympan/o + -metry; measures eardrum compliance/mobility; detects fluid in middle ear, perforations, ossicular chain problems; not a hearing test</div></div></div>
+        <div class="pitem"><div><div class="pname">Otoacoustic emissions (OAE)</div><div class="pdef">Measures sounds produced by cochlea; newborn hearing screening; objective test (no patient response needed); detects cochlear hair cell damage</div></div></div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-400);margin:10px 0 6px">Therapeutic</div>
+        <div class="pitem"><div><div class="pname">Myringotomy (myring/o + -tomy)</div><div class="pdef">Incision into tympanic membrane; relieves pressure from middle ear fluid; tympanostomy tube (PE tube) inserted to keep opening patent; treats recurrent otitis media</div></div></div>
+        <div class="pitem"><div><div class="pname">Tympanoplasty (tympan/o + -plasty)</div><div class="pdef">Surgical repair of perforated tympanic membrane (myringoplasty) and/or ossicles; restores hearing in conductive hearing loss</div></div></div>
+        <div class="pitem"><div><div class="pname">Cochlear implant</div><div class="pdef">Electronic device bypasses damaged hair cells; electrodes stimulate cochlear nerve directly; for severe-profound SNHL; requires auditory rehabilitation</div></div></div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px">
+          <span class="badge badge-violet">Stapedectomy (otosclerosis)</span>
+          <span class="badge badge-teal">Mastoidectomy (mastoiditis)</span>
+          <span class="badge badge-amber">Hearing aids (SNHL)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== VOCAB ===== -->
+  <div class="section" id="sec-vocab">
+    <div class="sub-tabs" id="vocab-tabs">
+      <button class="sub-tab active" onclick="showVocab('eye-cf',this)">Eye combining forms</button>
+      <button class="sub-tab" onclick="showVocab('ear-cf',this)">Ear combining forms</button>
+      <button class="sub-tab" onclick="showVocab('affixes',this)">Prefixes &amp; Suffixes</button>
+      <button class="sub-tab" onclick="showVocab('decode',this)">Term decoding</button>
+    </div>
+    <div class="card">
+      <div class="vpanel active" id="vt-eye-cf">
+        <table class="vtable"><thead><tr><th>Combining form</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+          <tr><td><code>ambly/o</code></td><td>dull, dim (vision)</td><td>amblyopia (lazy eye)</td></tr>
+          <tr><td><code>blephar/o</code></td><td>eyelid</td><td>blepharoptosis, blepharedema</td></tr>
+          <tr><td><code>choroid/o</code></td><td>choroid (vascular layer)</td><td>choroiditis</td></tr>
+          <tr><td><code>chromat/o</code></td><td>color</td><td>achromatopsia (no color vision)</td></tr>
+          <tr><td><code>conjunctiv/o</code></td><td>conjunctiva</td><td>conjunctivitis</td></tr>
+          <tr><td><code>cor/o, core/o</code></td><td>pupil</td><td>coreoplasty</td></tr>
+          <tr><td><code>corne/o</code></td><td>cornea</td><td>corneal, corneoscleral</td></tr>
+          <tr><td><code>cycl/o</code></td><td>ciliary body</td><td>cycloplegia, cyclitis</td></tr>
+          <tr><td><code>dacry/o</code></td><td>tears, lacrimal</td><td>dacryoadenitis</td></tr>
+          <tr><td><code>dipl/o</code></td><td>double</td><td>diplopia (double vision)</td></tr>
+          <tr><td><code>goni/o</code></td><td>angle (of eye)</td><td>goniotomy, gonioscopy</td></tr>
+          <tr><td><code>ir/o, irid/o</code></td><td>iris</td><td>iritis, iridotomy</td></tr>
+          <tr><td><code>kerat/o</code></td><td>cornea (also keratin)</td><td>keratitis, keratoplasty</td></tr>
+          <tr><td><code>lacrim/o</code></td><td>tears, lacrimal gland</td><td>lacrimation, lacrimal duct</td></tr>
+          <tr><td><code>macul/o</code></td><td>macula (yellow spot)</td><td>macular degeneration (ARMD)</td></tr>
+          <tr><td><code>ocul/o</code></td><td>eye</td><td>ocular, extraocular muscles</td></tr>
+          <tr><td><code>ophthalm/o</code></td><td>eye</td><td>ophthalmoscopy, ophthalmologist</td></tr>
+          <tr><td><code>opt/o, optic/o</code></td><td>vision, eye</td><td>optometry, optic nerve</td></tr>
+          <tr><td><code>palpebr/o</code></td><td>eyelid</td><td>palpebral fissure</td></tr>
+          <tr><td><code>papill/o</code></td><td>optic disk / nipple</td><td>papilledema (swollen optic disk)</td></tr>
+          <tr><td><code>phac/o, phak/o</code></td><td>lens of eye</td><td>aphakia, phacoemulsification</td></tr>
+          <tr><td><code>pupill/o</code></td><td>pupil</td><td>pupillary reflex, pupillometry</td></tr>
+          <tr><td><code>retin/o</code></td><td>retina</td><td>retinopathy, retinal detachment</td></tr>
+          <tr><td><code>scler/o</code></td><td>sclera (also hardening)</td><td>scleritis, sclerotherapy</td></tr>
+          <tr><td><code>ton/o</code></td><td>tone, tension (pressure)</td><td>tonometry (measures IOP)</td></tr>
+          <tr><td><code>trop/o</code></td><td>turning</td><td>exotropia, esotropia</td></tr>
+          <tr><td><code>uve/o</code></td><td>uvea (vascular coat)</td><td>uveitis</td></tr>
+          <tr><td><code>vitre/o</code></td><td>vitreous humor</td><td>vitrectomy</td></tr>
+          <tr><td><code>xer/o</code></td><td>dry</td><td>xerophthalmia (dry eye)</td></tr>
+        </tbody></table>
+      </div>
+      <div class="vpanel" id="vt-ear-cf">
+        <table class="vtable"><thead><tr><th>Combining form</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+          <tr><td><code class="ear">acous/o, audi/o</code></td><td>hearing, sound</td><td>acoustic, audiometry, presbycusis</td></tr>
+          <tr><td><code class="ear">aur/i, aur/o</code></td><td>ear, auricle</td><td>aural, auricle, binaural</td></tr>
+          <tr><td><code class="ear">cochle/o</code></td><td>cochlea (snail)</td><td>cochlear implant, cochleitis</td></tr>
+          <tr><td><code class="ear">labyrinth/o</code></td><td>labyrinth (inner ear)</td><td>labyrinthitis, labyrinthectomy</td></tr>
+          <tr><td><code class="ear">mastoid/o</code></td><td>mastoid process</td><td>mastoiditis, mastoidectomy</td></tr>
+          <tr><td><code class="ear">myring/o</code></td><td>tympanic membrane (eardrum)</td><td>myringotomy, myringoplasty</td></tr>
+          <tr><td><code class="ear">ossicul/o</code></td><td>ossicles (tiny ear bones)</td><td>ossiculoplasty</td></tr>
+          <tr><td><code class="ear">ot/o</code></td><td>ear</td><td>otitis, otoscopy, otolaryngology</td></tr>
+          <tr><td><code class="ear">salping/o</code></td><td>eustachian tube (or fallopian tube)</td><td>salpingitis (ear context: ET dysfunction)</td></tr>
+          <tr><td><code class="ear">tympan/o</code></td><td>eardrum, tympanic membrane</td><td>tympanoplasty, tympanometry</td></tr>
+        </tbody></table>
+        <div class="tip violet" style="margin-top:12px"><strong>salping/o</strong> has two meanings: eustachian tube (Chapter 13 ear context) and fallopian tube (Chapter 8 female reproductive). Context determines which!</div>
+      </div>
+      <div class="vpanel" id="vt-affixes">
+        <div style="font-size:13px;font-weight:600;color:var(--blue);margin-bottom:8px">Prefixes</div>
+        <table class="vtable" style="margin-bottom:1rem"><thead><tr><th>Prefix</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+          <tr><td><code>a-, an-</code></td><td>without, absence</td><td>aphakia (no lens), achromatopsia</td></tr>
+          <tr><td><code>bi-, bin-</code></td><td>two, both</td><td>binocular (both eyes), binaural (both ears)</td></tr>
+          <tr><td><code>ex-, exo-</code></td><td>out, outward</td><td>exotropia (eye turns out), exophthalmia</td></tr>
+          <tr><td><code>extra-</code></td><td>outside, beyond</td><td>extraocular (outside the eye)</td></tr>
+          <tr><td><code>hemi-</code></td><td>half</td><td>hemianopsia (half visual field loss)</td></tr>
+          <tr><td><code>presby-</code></td><td>old, elder</td><td>presbyopia (age-related vision), presbycusis (age-related hearing)</td></tr>
+        </tbody></table>
+        <div style="font-size:13px;font-weight:600;color:var(--violet);margin-bottom:8px">Suffixes</div>
+        <table class="vtable"><thead><tr><th>Suffix</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+          <tr><td><code>-edema</code></td><td>swelling</td><td>blepharedema (eyelid swelling)</td></tr>
+          <tr><td><code>-ia</code></td><td>condition, state</td><td>exophthalmia, exotropia</td></tr>
+          <tr><td><code>-itis</code></td><td>inflammation</td><td>keratitis, conjunctivitis, otitis</td></tr>
+          <tr><td><code>-metry</code></td><td>measurement</td><td>tonometry (IOP), audiometry (hearing)</td></tr>
+          <tr><td><code>-opia</code></td><td>vision condition</td><td>myopia, hyperopia, presbyopia, diplopia</td></tr>
+          <tr><td><code>-opsia</code></td><td>vision condition (often loss)</td><td>hemianopsia, achromatopsia</td></tr>
+          <tr><td><code>-pathy</code></td><td>disease, disorder</td><td>retinopathy (retinal disease)</td></tr>
+          <tr><td><code>-plasty</code></td><td>surgical repair/reconstruction</td><td>keratoplasty, tympanoplasty, coreoplasty</td></tr>
+          <tr><td><code>-ptosis</code></td><td>drooping, prolapse</td><td>blepharoptosis (eyelid drooping)</td></tr>
+          <tr><td><code>-scopy</code></td><td>visual examination</td><td>ophthalmoscopy, otoscopy</td></tr>
+        </tbody></table>
+      </div>
+      <div class="vpanel" id="vt-decode">
+        <table class="vtable"><thead><tr><th>Term</th><th>Word parts</th><th>Definition</th></tr></thead><tbody>
+          <tr><td>Achromatopsia</td><td>a- + chromat/o + -opsia</td><td>Condition of no color vision (complete color blindness)</td></tr>
+          <tr><td>Aphakia</td><td>a- + phak/o + -ia</td><td>Absence of the lens of the eye</td></tr>
+          <tr><td>Blepharedema</td><td>blephar/o + -edema</td><td>Swelling of the eyelid</td></tr>
+          <tr><td>Blepharoptosis</td><td>blephar/o + -ptosis</td><td>Drooping of the upper eyelid</td></tr>
+          <tr><td>Conjunctivitis</td><td>conjunctiv/o + -itis</td><td>Inflammation of the conjunctiva (pink eye)</td></tr>
+          <tr><td>Coreoplasty</td><td>cor/o + -plasty</td><td>Surgical repair/reshaping of the pupil</td></tr>
+          <tr><td>Dacryoadenitis</td><td>dacry/o + aden/o + -itis</td><td>Inflammation of the lacrimal (tear) gland</td></tr>
+          <tr><td>Diabetic retinopathy</td><td>retin/o + -pathy</td><td>Retinal disease from diabetes</td></tr>
+          <tr><td>Diplopia</td><td>dipl/o + -opia</td><td>Double vision</td></tr>
+          <tr><td>Exophthalmia</td><td>ex/o + ophthalm/o + -ia</td><td>Protrusion/bulging of eyeballs (Graves disease)</td></tr>
+          <tr><td>Exotropia</td><td>ex/o + trop/o + -ia</td><td>Outward turning/deviation of the eye</td></tr>
+          <tr><td>Goniotomy</td><td>goni/o + -tomy</td><td>Incision into the angle of the anterior chamber</td></tr>
+          <tr><td>Hemianopsia</td><td>hemi- + an- + -opsia</td><td>Loss of vision in half the visual field</td></tr>
+          <tr><td>Keratitis</td><td>kerat/o + -itis</td><td>Inflammation of the cornea</td></tr>
+          <tr><td>Keratoplasty</td><td>kerat/o + -plasty</td><td>Surgical repair/transplant of cornea</td></tr>
+          <tr><td>Mastoiditis</td><td>mastoid/o + -itis</td><td>Inflammation/infection of mastoid air cells</td></tr>
+          <tr><td>Myringotomy</td><td>myring/o + -tomy</td><td>Incision into the tympanic membrane</td></tr>
+          <tr><td>Ophthalmoscopy</td><td>ophthalm/o + -scopy</td><td>Visual examination of interior of eye</td></tr>
+          <tr><td>Otitis media</td><td>ot/o + -itis + media</td><td>Inflammation/infection of middle ear</td></tr>
+          <tr><td>Presbycusis</td><td>presby- + acous/o + -is</td><td>Age-related hearing loss</td></tr>
+          <tr><td>Presbyopia</td><td>presby- + -opia</td><td>Age-related loss of near vision</td></tr>
+          <tr><td>Tonometry</td><td>ton/o + -metry</td><td>Measurement of intraocular pressure (IOP)</td></tr>
+          <tr><td>Tympanoplasty</td><td>tympan/o + -plasty</td><td>Surgical repair of eardrum (and/or ossicles)</td></tr>
+          <tr><td>Vitrectomy</td><td>vitre/o + -ectomy</td><td>Surgical removal of vitreous humor</td></tr>
+          <tr><td>Xerophthalmia</td><td>xer/o + ophthalm/o + -ia</td><td>Condition of dry eye</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FLASHCARDS ===== -->
+  <div class="section" id="sec-flashcards">
+    <button class="fc-shuffle" onclick="shuffleCards()">⇄ Shuffle cards</button>
+    <div class="fc-nav">
+      <button class="fc-btn" onclick="prevCard()">&#8592;</button>
+      <div class="fc-counter" id="fc-counter">1 / 26</div>
+      <button class="fc-btn" onclick="nextCard()">&#8594;</button>
+    </div>
+    <div class="flip-wrap" onclick="flipCard()">
+      <div class="flip-inner" id="fc-inner">
+        <div class="flip-front"><div class="flip-term" id="fc-term">ophthalm/o</div><div class="flip-hint">click to reveal</div></div>
+        <div class="flip-back"><div class="flip-def" id="fc-def">eye</div><div class="flip-ex" id="fc-ex">ophthalmoscopy, ophthalmologist</div></div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:var(--gray-400);text-align:center;margin-top:10px">Click to flip · Arrows to navigate</div>
+  </div>
+
+  <!-- ===== QUIZ ===== -->
+  <div class="section" id="sec-quiz">
+    <div class="card" id="quiz-card">
+      <div class="quiz-progress" id="quiz-dots"></div>
+      <div class="quiz-q-text" id="quiz-q"></div>
+      <div class="quiz-opts" id="quiz-opts"></div>
+      <div id="quiz-fb" style="display:none"></div>
+      <button class="quiz-next" id="quiz-next" onclick="nextQ()" style="display:none">Next question →</button>
+    </div>
+  </div>
+
+</div>
+<script>
+const SECS=['overview','eye-anatomy','ear-anatomy','pathology','procedures','vocab','flashcards','quiz'];
+const visited=new Set(['overview']);
+function showSec(id,btn){
+  SECS.forEach(s=>document.getElementById('sec-'+s).classList.remove('active'));
+  document.querySelectorAll('.nav-row .tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active'); btn.classList.add('active');
+  visited.add(id);
+  const pct=Math.round((visited.size/SECS.length)*100);
+  document.getElementById('prog-fill').style.width=pct+'%';
+  document.getElementById('prog-label').textContent=pct+'%';
+  if(id==='flashcards') renderCard();
+  if(id==='quiz'&&!quizStarted) startQuiz();
+}
+function showPath(id,btn){
+  document.querySelectorAll('[id^="pp-"]').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('#path-tabs .sub-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('pp-'+id).classList.add('active'); btn.classList.add('active');
+}
+function showVocab(id,btn){
+  document.querySelectorAll('[id^="vt-"]').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('#vocab-tabs .sub-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('vt-'+id).classList.add('active'); btn.classList.add('active');
+}
+let allCards=[
+  {term:'ophthalm/o', def:'eye', ex:'ophthalmoscopy, ophthalmologist'},
+  {term:'ocul/o', def:'eye', ex:'ocular, extraocular'},
+  {term:'retin/o', def:'retina', ex:'retinopathy, retinal detachment'},
+  {term:'kerat/o', def:'cornea', ex:'keratitis, keratoplasty'},
+  {term:'corne/o', def:'cornea', ex:'corneal'},
+  {term:'ir/o, irid/o', def:'iris', ex:'iritis, iridotomy'},
+  {term:'phac/o, phak/o', def:'lens of eye', ex:'aphakia, phacoemulsification'},
+  {term:'blephar/o', def:'eyelid', ex:'blepharoptosis, blepharedema'},
+  {term:'conjunctiv/o', def:'conjunctiva', ex:'conjunctivitis'},
+  {term:'lacrim/o, dacry/o', def:'tears, lacrimal', ex:'lacrimation, dacryoadenitis'},
+  {term:'ton/o', def:'tone, tension (IOP)', ex:'tonometry'},
+  {term:'vitre/o', def:'vitreous humor', ex:'vitrectomy'},
+  {term:'macul/o', def:'macula (yellow spot)', ex:'macular degeneration (ARMD)'},
+  {term:'trop/o', def:'turning (eye deviation)', ex:'exotropia, esotropia'},
+  {term:'dipl/o', def:'double', ex:'diplopia (double vision)'},
+  {term:'ot/o', def:'ear', ex:'otitis, otoscopy'},
+  {term:'myring/o', def:'tympanic membrane', ex:'myringotomy, myringoplasty'},
+  {term:'tympan/o', def:'eardrum, tympanic membrane', ex:'tympanoplasty, tympanometry'},
+  {term:'cochle/o', def:'cochlea', ex:'cochlear implant'},
+  {term:'mastoid/o', def:'mastoid process', ex:'mastoiditis, mastoidectomy'},
+  {term:'-opia', def:'vision condition', ex:'myopia, presbyopia, diplopia'},
+  {term:'-opsia', def:'vision condition (often loss)', ex:'hemianopsia, achromatopsia'},
+  {term:'-ptosis', def:'drooping, prolapse', ex:'blepharoptosis (eyelid drooping)'},
+  {term:'presby-', def:'old, elder', ex:'presbyopia, presbycusis'},
+  {term:'xer/o', def:'dry', ex:'xerophthalmia (dry eye)'},
+  {term:'ambly/o', def:'dull, dim (vision)', ex:'amblyopia (lazy eye)'},
+];
+let fcIdx=0,fcFlipped=false;
+function renderCard(){
+  const c=allCards[fcIdx];
+  document.getElementById('fc-term').textContent=c.term;
+  document.getElementById('fc-def').textContent=c.def;
+  document.getElementById('fc-ex').textContent=c.ex;
+  document.getElementById('fc-counter').textContent=(fcIdx+1)+' / '+allCards.length;
+  document.getElementById('fc-inner').classList.remove('flipped'); fcFlipped=false;
+}
+function flipCard(){ fcFlipped=!fcFlipped; document.getElementById('fc-inner').classList.toggle('flipped',fcFlipped); }
+function nextCard(){ fcIdx=(fcIdx+1)%allCards.length; renderCard(); }
+function prevCard(){ fcIdx=(fcIdx-1+allCards.length)%allCards.length; renderCard(); }
+function shuffleCards(){
+  for(let i=allCards.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [allCards[i],allCards[j]]=[allCards[j],allCards[i]]; }
+  fcIdx=0; renderCard();
+}
+const QUIZ=[
+  {q:'What does kerat/o mean?',ans:'Cornea',opts:['Retina','Iris','Cornea','Lens']},
+  {q:'Blepharoptosis (blephar/o + -ptosis) is:',ans:'Drooping of the upper eyelid',opts:['Swelling of the eyelid','Drooping of the upper eyelid','Inflammation of the eyelid','Removal of the eyelid']},
+  {q:'Tonometry (ton/o + -metry) measures:',ans:'Intraocular pressure (IOP) — used to screen for glaucoma',opts:['Visual acuity','Intraocular pressure (IOP) — used to screen for glaucoma','Retinal blood flow','Corneal curvature']},
+  {q:'Presbyopia (presby- + -opia) affects:',ans:'Near vision; age-related loss of accommodation (lens hardens)',opts:['Color vision','Peripheral vision','Near vision; age-related loss of accommodation (lens hardens)','Distance vision only']},
+  {q:'Diplopia (dipl/o + -opia) means:',ans:'Double vision',opts:['Blurry vision','Loss of color vision','Double vision','Loss of peripheral vision']},
+  {q:'Myringotomy (myring/o + -tomy) is:',ans:'Incision into the tympanic membrane to relieve middle ear pressure',opts:['Repair of the eardrum','Incision into the tympanic membrane to relieve middle ear pressure','Removal of the eardrum','Examination of the eardrum']},
+  {q:'Presbycusis (presby- + acous/o) is:',ans:'Age-related sensorineural hearing loss',opts:['Age-related vision loss','Age-related sensorineural hearing loss','Middle ear infection','Ringing in the ears']},
+  {q:'The three ossicles in order from eardrum to oval window are:',ans:'Malleus → Incus → Stapes (MIS)',opts:['Stapes → Incus → Malleus','Incus → Malleus → Stapes','Malleus → Incus → Stapes (MIS)','Malleus → Stapes → Incus']},
+  {q:'Amblyopia (ambly/o + -opia) is:',ans:'Reduced vision in one eye from abnormal visual development ("lazy eye")',opts:['Double vision','Reduced vision in one eye from abnormal visual development ("lazy eye")','Complete color blindness','Drooping eyelid']},
+  {q:'Keratoplasty (kerat/o + -plasty) is:',ans:'Corneal transplant surgery',opts:['Surgical repair of the pupil','Removal of the cornea','Corneal transplant surgery','Measurement of corneal pressure']},
+  {q:'Hemianopsia (hemi- + an- + -opsia) means:',ans:'Loss of vision in half the visual field',opts:['Reduced central vision','Loss of vision in half the visual field','Complete blindness','Double vision in one eye']},
+  {q:'Vitrectomy (vitre/o + -ectomy) is performed for:',ans:'Diabetic retinopathy, retinal detachment, vitreous hemorrhage',opts:['Cataracts','Diabetic retinopathy, retinal detachment, vitreous hemorrhage','Glaucoma drainage','Corneal transplant']},
+];
+let qIdx=0,score=0,results=[],quizStarted=false;
+function startQuiz(){ quizStarted=true; qIdx=0; score=0; results=[]; renderQ(); }
+function renderQ(){
+  const q=QUIZ[qIdx];
+  document.getElementById('quiz-dots').innerHTML=QUIZ.map((_,i)=>`<div class="q-dot ${i<results.length?(results[i]?'pass':'fail'):''}" title="Q${i+1}"></div>`).join('');
+  document.getElementById('quiz-q').textContent=(qIdx+1)+'. '+q.q;
+  document.getElementById('quiz-opts').innerHTML=q.opts.map(o=>`<button class="q-opt" onclick="checkAns(this,'${o.replace(/'/g,"\\'")}','${q.ans.replace(/'/g,"\\'")}')">${o}</button>`).join('');
+  const fb=document.getElementById('quiz-fb'); fb.style.display='none'; fb.className='q-fb';
+  document.getElementById('quiz-next').style.display='none';
+}
+function checkAns(btn,chosen,correct){
+  document.querySelectorAll('.q-opt').forEach(b=>{ b.disabled=true; if(b.textContent===correct) b.classList.add('correct'); });
+  const ok=chosen===correct;
+  if(ok){ score++; btn.classList.add('correct'); } else btn.classList.add('wrong');
+  results.push(ok);
+  document.getElementById('quiz-dots').innerHTML=QUIZ.map((_,i)=>`<div class="q-dot ${i<results.length?(results[i]?'pass':'fail'):''}" title="Q${i+1}"></div>`).join('');
+  const fb=document.getElementById('quiz-fb');
+  fb.style.display='block'; fb.className='q-fb '+(ok?'correct':'wrong');
+  fb.textContent=ok?'✓ Correct!':`✗ Correct answer: ${correct}`;
+  const nxt=document.getElementById('quiz-next');
+  nxt.style.display='inline-block';
+  nxt.textContent=qIdx===QUIZ.length-1?'See results':'Next question →';
+}
+function nextQ(){ qIdx++; if(qIdx>=QUIZ.length){ showScore(); return; } renderQ(); }
+function showScore(){
+  const pct=Math.round((score/QUIZ.length)*100);
+  const cls=pct>=80?'great':pct>=60?'ok':'retry';
+  const msg=pct>=90?'Outstanding! Chapter 13 mastered.':pct>=70?'Good work! Review a few terms.':'Keep studying — check eye anatomy and ear anatomy tabs.';
+  document.getElementById('quiz-card').innerHTML=`<div class="score-wrap"><div class="score-big ${cls}">${score}/${QUIZ.length}</div><div style="font-size:13px;color:var(--gray-400);margin-top:4px">${pct}%</div><div class="score-msg">${msg}</div><button class="retry-btn" onclick="retakeQuiz()">Retake quiz</button></div>`;
+}
+function retakeQuiz(){
+  document.getElementById('quiz-card').innerHTML=`<div class="quiz-progress" id="quiz-dots"></div><div class="quiz-q-text" id="quiz-q"></div><div class="quiz-opts" id="quiz-opts"></div><div id="quiz-fb" style="display:none"></div><button class="quiz-next" id="quiz-next" onclick="nextQ()" style="display:none">Next question →</button>`;
+  qIdx=0; score=0; results=[]; renderQ();
+}
+</script>
+</body>
+</html>
